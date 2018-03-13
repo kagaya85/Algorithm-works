@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-	int n, num, temp, res[10];
+	int n, num, temp, res[10] = 0, high, low, div;
 	//ifstream fin;
 
 	cin >> num;
@@ -18,9 +18,21 @@ int main()
 
 	//按位统计
 	for (int i = 0; i < n; i++) {
-		
-		for (int j = 0; j < 10; j++) {
+		//统计0~9的个数
+		div = 1;
+		for(int m = 0; m < i; m++){
+			div *= 10;
+		}
 
+		for (int j = 0; j < 10; j++) {
+			//取出该位
+			temp = num % (div * 10);
+			temp /= div;
+			high = num / (div * 10);
+			low = num % div;
+			if(j > temp){
+				res[j] += 
+			}
 		}
 	}
 
