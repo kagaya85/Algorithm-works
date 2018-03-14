@@ -30,11 +30,20 @@ int main()
 			temp /= div;
 			high = num / (div * 10);
 			low = num % div;
-			if(j > temp){
-				res[j] += 
+			if(j > temp) {
+				res[j] += high * div;
+			}
+			else if(j == temp){
+				res[j] += high * div + low + 1;
+			}
+			else {
+				res[j] += (high + 1) * div
 			}
 		}
 	}
+	
+	for(int i = 0; i < 10; i++)
+		cout << res[i] << endl;
 
 	return 0;
 }
