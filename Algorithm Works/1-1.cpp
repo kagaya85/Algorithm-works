@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-	int n, num, temp, res[10] = 0, high, low, div;
+	int n, num, temp, res[10] = { 0 }, high, low, div;
 	//ifstream fin;
 
 	cin >> num;
@@ -37,7 +37,7 @@ int main()
 				res[j] += high * div + low + 1;
 			}
 			else {
-				res[j] += (high + 1) * div
+				res[j] += (high + 1) * div;
 			}
 		}
 	}
