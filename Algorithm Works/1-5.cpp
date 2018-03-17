@@ -54,7 +54,7 @@ double MaxGapQA::getMaxGap()
 	max = data[maxIndex];
 	min = data[minIndex];
 
-	avrGap = (max - min) / nCount;
+	avrGap = (max - min) / (nCount - 1);
 	count = new(nothrow) int[nCount - 1];
 	low = new(nothrow) double[nCount - 1];
 	high = new(nothrow) double[nCount - 1];
@@ -64,9 +64,7 @@ double MaxGapQA::getMaxGap()
 	}
 
 	//初始化区块,插入元素前区块的上边界为极大,下边界为极小值
-	low[0] = min;
-	high[nCount - 2] = max;
-	for (int i = 0; i < nCount - 2; i++) {
+	for (int i = 0; i < nCount - 1; i++) {
 		low[i] = max;
 		high[i] = min;
 		count[i] = 0;
@@ -74,7 +72,7 @@ double MaxGapQA::getMaxGap()
 
 	//把数放入分好的区块
 	for (int i = 0; i < nCount; i++) {
-		index = int(data[i] / avrGap);
+		index = int(data[i] / avrGap) - 1;
 		//左闭右开 处理等于max的情况
 		if (index == nCount - 1)
 			index -= 1;
@@ -109,6 +107,7 @@ void MaxGapQA::show(const char *filename)
 {
 	ofstream fout(filename);
 
+	//cout << maxGap;
 	fout << maxGap;
 
 	fout.close();
